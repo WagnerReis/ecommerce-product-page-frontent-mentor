@@ -15,7 +15,11 @@ import { useIsMobile } from "../../hooks/use-mobile";
 import { Popover } from "radix-ui";
 import { Cart } from "../Cart";
 
-export function Header() {
+interface HeaderProps {
+  toggleSidebar: () => void;
+}
+
+export function Header({ toggleSidebar }: HeaderProps) {
   const isMobile = useIsMobile();
 
   return (
@@ -23,7 +27,11 @@ export function Header() {
       <HeaderContainer>
         <HeaderContent>
           <NavContainer>
-            {isMobile && <Menu absoluteStrokeWidth={false} size={24} />}
+            {isMobile && (
+              <button onClick={toggleSidebar}>
+                <Menu absoluteStrokeWidth={false} size={24} />
+              </button>
+            )}
             <img src={logo} alt="" />
             {!isMobile && (
               <nav>

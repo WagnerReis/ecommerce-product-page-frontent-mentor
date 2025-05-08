@@ -118,6 +118,12 @@ export const NavContainer = styled.div`
   gap: 3rem;
   height: 100%;
 
+  button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
   img {
     height: 24px;
   }

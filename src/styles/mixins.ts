@@ -32,7 +32,7 @@ export const mixins = {
     textPreset3Bold: css`
       font-family: ${fontFamily.kumbhSans};
       font-weight: ${fontWeight.bold};
-      font-size: 16px;
+      font-size: 18px;
       line-height: 26px;
       letter-spacing: 0px;
     `,
