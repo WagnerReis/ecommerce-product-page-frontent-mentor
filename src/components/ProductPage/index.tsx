@@ -8,12 +8,51 @@ import {
   Price,
   PriceContainer,
   Button,
+  ThumbnailContainer,
 } from "./styles";
 
+import image1 from "../../assets/image-product-1.jpg";
+import image2 from "../../assets/image-product-2.jpg";
+import image3 from "../../assets/image-product-3.jpg";
+import image4 from "../../assets/image-product-4.jpg";
+
+import thumbnail1 from "../../assets/image-product-1-thumbnail.jpg";
+import thumbnail2 from "../../assets/image-product-2-thumbnail.jpg";
+import thumbnail3 from "../../assets/image-product-3-thumbnail.jpg";
+import thumbnail4 from "../../assets/image-product-4-thumbnail.jpg";
+import { useState } from "react";
+
 export function ProductPage() {
+  const [imageDefault, setImageDefault] = useState(image1);
+
   return (
     <Container>
-      <ImagesContainer>images</ImagesContainer>
+      <ImagesContainer>
+        <img src={imageDefault} alt="" />
+
+        <ThumbnailContainer>
+          <img
+            src={thumbnail1}
+            alt=""
+            onMouseEnter={() => setImageDefault(image1)}
+          />
+          <img
+            src={thumbnail2}
+            alt=""
+            onMouseEnter={() => setImageDefault(image2)}
+          />
+          <img
+            src={thumbnail3}
+            alt=""
+            onMouseEnter={() => setImageDefault(image3)}
+          />
+          <img
+            src={thumbnail4}
+            alt=""
+            onMouseEnter={() => setImageDefault(image4)}
+          />
+        </ThumbnailContainer>
+      </ImagesContainer>
       <InfoContainer>
         <h1>Sneaker Company</h1>
         <h2>Fall Limited Edition Sneakers</h2>

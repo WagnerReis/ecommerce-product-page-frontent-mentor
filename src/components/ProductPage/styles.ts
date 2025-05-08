@@ -23,7 +23,18 @@ export const ImagesContainer = styled.div`
   min-width: 28rem;
   height: 100%;
 
-  border: 1px solid purple;
+  /* border: 1px solid purple; */
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  img {
+    width: 448px;
+    height: 445px;
+
+    border-radius: 12px;
+  }
 `;
 
 export const InfoContainer = styled.div`
@@ -119,5 +130,19 @@ export const Button = styled.button`
 
   svg {
     color: ${(props) => props.theme.gray[950]};
+  }
+`;
+
+export const ThumbnailContainer = styled.div`
+  display: flex;
+  gap: 2rem;
+
+  margin-top: 2rem;
+
+  img {
+    width: 5.5rem;
+    height: 5.5rem;
+    border-radius: 12px;
+    cursor: pointer;
   }
 `;
