@@ -33,7 +33,7 @@ export const mixins = {
       font-family: ${fontFamily.kumbhSans};
       font-weight: ${fontWeight.bold};
       font-size: 16px;
-      line-height: 24px;
+      line-height: 26px;
       letter-spacing: 0px;
     `,
 

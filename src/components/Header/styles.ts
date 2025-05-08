@@ -9,7 +9,7 @@ export const HeaderContainer = styled.header`
   padding-bottom: 2rem;
   height: 5.1875rem;
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     margin: 0 3rem;
   }
 
@@ -61,9 +61,11 @@ export const UserProfile = styled.img`
   }
 `;
 
-export const CartContainer = styled.div`
+export const CartContainer = styled.button`
   position: relative;
   cursor: pointer;
+  border: none;
+  background: transparent;
 
   margin-top: 7px;
 
@@ -137,7 +139,7 @@ export const NavContainer = styled.div`
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     align-items: center;
     gap: 1rem;
   }

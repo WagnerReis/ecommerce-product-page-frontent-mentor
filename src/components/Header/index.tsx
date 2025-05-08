@@ -12,6 +12,8 @@ import {
   HeaderContent,
 } from "./styles";
 import { useIsMobile } from "../../hooks/use-mobile";
+import { Popover } from "radix-ui";
+import { Cart } from "../Cart";
 
 export function Header() {
   const isMobile = useIsMobile();
@@ -35,10 +37,17 @@ export function Header() {
           </NavContainer>
 
           <UserActionContainer>
-            <CartContainer>
-              <span>3</span>
-              <ShoppingCart absoluteStrokeWidth={false} size={24} />
-            </CartContainer>
+            <Popover.Root>
+              <Popover.Trigger asChild>
+                <CartContainer>
+                  <span>3</span>
+                  <ShoppingCart absoluteStrokeWidth={false} size={24} />
+                </CartContainer>
+              </Popover.Trigger>
+              <Popover.Content>
+                <Cart />
+              </Popover.Content>
+            </Popover.Root>
 
             <UserProfile src={userProfileImg} alt="" />
           </UserActionContainer>
