@@ -8,13 +8,20 @@ export function DefaultLayout() {
   const [isSidebarOpen, setIsSidbarOpen] = useState(false);
 
   function toggleSidebar() {
+    document.body.style.overflow = "hidden";
     setIsSidbarOpen((state) => !state);
   }
 
   return (
     <LayoutContainer>
       <Header toggleSidebar={toggleSidebar} />
-      <Sidebar open={isSidebarOpen} onClose={() => setIsSidbarOpen(false)} />
+      <Sidebar
+        open={isSidebarOpen}
+        onClose={() => {
+          document.body.style.overflow = "auto";
+          setIsSidbarOpen(false);
+        }}
+      />
       <Outlet />
     </LayoutContainer>
   );
