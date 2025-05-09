@@ -64,7 +64,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
                   <ShoppingCart absoluteStrokeWidth={false} size={24} />
                 </CartContainer>
               </Popover.Trigger>
-              <Popover.Content>
+              <Popover.Content style={{ zIndex: 10 }}>
                 <Cart items={cartItems} />
               </Popover.Content>
             </Popover.Root>
