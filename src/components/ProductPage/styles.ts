@@ -39,16 +39,24 @@ export const ImagesContainer = styled.div`
   flex-direction: column;
 
   img {
-    width: 448px;
+    width: 100%;
     height: 445px;
     object-fit: cover;
     border-radius: 12px;
     cursor: pointer;
   }
 
+  button:first-child {
+    left: 1rem;
+  }
+
+  button:last-child {
+    right: 1rem;
+  }
+
   @media (max-width: 768px) {
     img {
-      width: 100vw;
+      width: 100%;
       height: 290px;
     }
   }
@@ -61,6 +69,10 @@ export const ImagesContainer = styled.div`
       border-radius: 0;
     }
   }
+`;
+
+export const ImageSlider = styled.div`
+  position: relative;
 `;
 
 export const InfoContainer = styled.div`
@@ -171,6 +183,7 @@ export const Button = styled.button`
   border: none;
 
   background: ${(props) => props.theme.orange[300]};
+  box-shadow: 0 0 10px ${(props) => props.theme.orange[300]};
 
   display: flex;
   align-items: center;

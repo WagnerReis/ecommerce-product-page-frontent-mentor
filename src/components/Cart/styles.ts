@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { mixins } from "../../styles/mixins";
 
 export const CartContainer = styled.div`
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 22.5rem;
   height: 16rem;
   background: ${(props) => props.theme.white};
@@ -26,7 +27,6 @@ export const CartContainer = styled.div`
 
   @media (max-width: 375px) {
     position: relative;
-    left: -2%;
     top: 2rem;
   }
 `;

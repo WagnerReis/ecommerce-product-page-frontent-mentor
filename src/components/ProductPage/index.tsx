@@ -1,4 +1,4 @@
-import { ShoppingCart } from "lucide-react";
+import { ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react";
 import { useState } from "react";
 
 import { QuantitySelector } from "../QuantitySelector";
@@ -13,6 +13,7 @@ import {
   PriceContainer,
   Button,
   ThumbnailContainer,
+  ImageSlider,
 } from "./styles";
 
 import image1 from "../../assets/image-product-1.jpg";
@@ -25,6 +26,7 @@ import thumbnail2 from "../../assets/image-product-2-thumbnail.jpg";
 import thumbnail3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnail4 from "../../assets/image-product-4-thumbnail.jpg";
 import { useIsMobile } from "../../hooks/use-mobile";
+import { ChevronButton } from "../ChevronButton";
 
 const images = [
   {
@@ -52,6 +54,8 @@ const images = [
 export function ProductPage() {
   const [imageDefault, setImageDefault] = useState(image1);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isMobile = useIsMobile();
 
   function handleOpenModal() {
@@ -66,6 +70,18 @@ export function ProductPage() {
     document.body.style.overflow = "auto";
   }
 
+  function handleNextImage() {
+    const nextIndex = (currentImageIndex + 1) % images.length;
+    setImageDefault(images[nextIndex].src);
+    setCurrentImageIndex(nextIndex);
+  }
+
+  function handlePrevImage() {
+    const nextIndex = (currentImageIndex - 1 + images.length) % images.length;
+    setImageDefault(images[nextIndex].src);
+    setCurrentImageIndex(nextIndex);
+  }
+
   return (
     <Container>
       <ImagesContainer>
@@ -75,13 +91,33 @@ export function ProductPage() {
             onClose={handleCloseModal}
             imagePreview={imageDefault}
             productImages={images}
+            handleNextImage={handleNextImage}
+            handlePrevImage={handlePrevImage}
+            changeCurrentImageIndex={setCurrentImageIndex}
           />
         )}
-        <img
-          src={imageDefault}
-          alt=""
-          onClick={isMobile ? undefined : handleOpenModal}
-        />
+
+        {isMobile ? (
+          <ImageSlider>
+            <ChevronButton onChangeImage={handlePrevImage}>
+              <ChevronLeft />
+            </ChevronButton>
+            <img
+              src={imageDefault}
+              alt=""
+              onClick={isMobile ? undefined : handleOpenModal}
+            />
+            <ChevronButton onChangeImage={handleNextImage}>
+              <ChevronRight />
+            </ChevronButton>
+          </ImageSlider>
+        ) : (
+          <img
+            src={imageDefault}
+            alt=""
+            onClick={isMobile ? undefined : handleOpenModal}
+          />
+        )}
 
         {!isMobile && (
           <ThumbnailContainer>

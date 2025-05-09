@@ -10,6 +10,7 @@ import {
   Thumbnail,
 } from "./styles";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronButton } from "../ChevronButton";
 
 interface ProductImage {
   id: string;
@@ -22,6 +23,9 @@ interface GalleryModalProps {
   imagePreview: string;
   productImages: ProductImage[];
   onClose: () => void;
+  handleNextImage: () => void;
+  handlePrevImage: () => void;
+  changeCurrentImageIndex: (index: number) => void;
 }
 
 export function GalleryModal({
@@ -29,26 +33,15 @@ export function GalleryModal({
   onClose,
   imagePreview,
   productImages,
+  handleNextImage,
+  handlePrevImage,
+  changeCurrentImageIndex,
 }: GalleryModalProps) {
   const [imageDefault, setImageDefault] = useState(imagePreview);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
     setImageDefault(imagePreview);
   }, [imagePreview]);
-
-  function handleNextImage() {
-    const nextIndex = (currentImageIndex + 1) % productImages.length;
-    setImageDefault(productImages[nextIndex].src);
-    setCurrentImageIndex(nextIndex);
-  }
-
-  function handlePrevImage() {
-    const nextIndex =
-      (currentImageIndex - 1 + productImages.length) % productImages.length;
-    setImageDefault(productImages[nextIndex].src);
-    setCurrentImageIndex(nextIndex);
-  }
 
   return createPortal(
     <div>
@@ -66,13 +59,15 @@ export function GalleryModal({
               strokeWidth={3}
             />
             <MainImage>
-              <button onClick={handlePrevImage}>
+              <ChevronButton onChangeImage={handlePrevImage}>
                 <ChevronLeft />
-              </button>
+              </ChevronButton>
+
               <img src={imageDefault} alt="" />
-              <button onClick={handleNextImage}>
+
+              <ChevronButton onChangeImage={handleNextImage}>
                 <ChevronRight />
-              </button>
+              </ChevronButton>
             </MainImage>
 
             <ThumbnailContainer>
@@ -84,7 +79,7 @@ export function GalleryModal({
                   selected={image.src === imageDefault}
                   onClick={() => {
                     setImageDefault(image.src);
-                    setCurrentImageIndex(+image.id - 1);
+                    changeCurrentImageIndex(Number(image.id) - 1);
                   }}
                 />
               ))}
