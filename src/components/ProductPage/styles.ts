@@ -141,7 +141,7 @@ export const ThumbnailContainer = styled.div`
     cursor: pointer;
 
     &:hover {
-      filter: brightness(1.3) saturate(1.1);
+      filter: brightness(1.1) saturate(1.1);
     }
   }
 `;

@@ -51,6 +51,11 @@ export const ModalContent = styled.div`
     cursor: pointer;
 
     color: ${(props) => props.theme.white};
+
+    &:hover {
+      color: ${(props) => props.theme.orange[500]};
+      transition: color 0.1s ease-in-out;
+    }
   }
 `;
 
