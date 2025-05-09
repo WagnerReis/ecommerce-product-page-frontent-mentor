@@ -6,8 +6,6 @@ export const Container = styled.main`
   height: 35.3125rem;
   margin: 6rem auto;
 
-  /* border: 1px solid red; */
-
   display: flex;
   gap: 8rem;
 
@@ -23,7 +21,6 @@ export const ImagesContainer = styled.div`
   min-width: 28rem;
   height: 100%;
 
-  /* border: 1px solid purple; */
   overflow: hidden;
 
   display: flex;
@@ -32,8 +29,9 @@ export const ImagesContainer = styled.div`
   img {
     width: 448px;
     height: 445px;
-
+    object-fit: cover;
     border-radius: 12px;
+    cursor: pointer;
   }
 `;
 
@@ -42,8 +40,6 @@ export const InfoContainer = styled.div`
   height: 27rem;
 
   margin: auto 0;
-
-  /* border: 1px solid green; */
 
   h1 {
     color: ${(props) => props.theme.gray[500]};
@@ -67,7 +63,6 @@ export const PriceContainer = styled.div`
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  /* border: 1px solid black; */
 
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -144,5 +139,9 @@ export const ThumbnailContainer = styled.div`
     height: 5.5rem;
     border-radius: 12px;
     cursor: pointer;
+
+    &:hover {
+      filter: brightness(1.3) saturate(1.1);
+    }
   }
 `;

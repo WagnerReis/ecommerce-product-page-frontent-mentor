@@ -1,5 +1,9 @@
 import { ShoppingCart } from "lucide-react";
+import { useState } from "react";
+
 import { QuantitySelector } from "../QuantitySelector";
+import { GalleryModal } from "../GalleryModal";
+
 import {
   Actions,
   Container,
@@ -20,37 +24,63 @@ import thumbnail1 from "../../assets/image-product-1-thumbnail.jpg";
 import thumbnail2 from "../../assets/image-product-2-thumbnail.jpg";
 import thumbnail3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnail4 from "../../assets/image-product-4-thumbnail.jpg";
-import { useState } from "react";
+
+const images = [
+  {
+    id: "1",
+    src: image1,
+    thumbnail: thumbnail1,
+  },
+  {
+    id: "2",
+    src: image2,
+    thumbnail: thumbnail2,
+  },
+  {
+    id: "3",
+    src: image3,
+    thumbnail: thumbnail3,
+  },
+  {
+    id: "4",
+    src: image4,
+    thumbnail: thumbnail4,
+  },
+];
 
 export function ProductPage() {
   const [imageDefault, setImageDefault] = useState(image1);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+  }
+
+  function handleOpenModal() {
+    setIsModalOpen(true);
+  }
 
   return (
     <Container>
       <ImagesContainer>
-        <img src={imageDefault} alt="" />
+        <GalleryModal
+          open={isModalOpen}
+          onClose={handleCloseModal}
+          imagePreview={imageDefault}
+          productImages={images}
+        />
+        <img src={imageDefault} alt="" onClick={handleOpenModal} />
 
         <ThumbnailContainer>
-          <img
-            src={thumbnail1}
-            alt=""
-            onMouseEnter={() => setImageDefault(image1)}
-          />
-          <img
-            src={thumbnail2}
-            alt=""
-            onMouseEnter={() => setImageDefault(image2)}
-          />
-          <img
-            src={thumbnail3}
-            alt=""
-            onMouseEnter={() => setImageDefault(image3)}
-          />
-          <img
-            src={thumbnail4}
-            alt=""
-            onMouseEnter={() => setImageDefault(image4)}
-          />
+          {images.map((image) => (
+            <img
+              key={image.id}
+              src={image.thumbnail}
+              alt=""
+              onClick={handleOpenModal}
+              onMouseEnter={() => setImageDefault(image.src)}
+            />
+          ))}
         </ThumbnailContainer>
       </ImagesContainer>
       <InfoContainer>
