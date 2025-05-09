@@ -55,7 +55,7 @@ export const SidebarContainer = styled.div.withConfig({
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
+  height: 100%;
   width: 301px;
   background-color: ${(props) => props.theme.white};
   z-index: 1000;
@@ -87,7 +87,7 @@ export const SidebarContainer = styled.div.withConfig({
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     width: 250px;
 
     padding-top: 1.5rem;

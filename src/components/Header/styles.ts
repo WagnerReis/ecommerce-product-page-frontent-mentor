@@ -36,7 +36,7 @@ export const UserActionContainer = styled.div`
     gap: 2rem;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     gap: 1rem;
     height: 30px;
     align-items: center;
@@ -55,7 +55,7 @@ export const UserProfile = styled.img`
     transition: border-color 0.2s;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     width: 2rem;
     height: 2rem;
   }
@@ -96,7 +96,7 @@ export const CartContainer = styled.button`
     letter-spacing: 0;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     svg {
       width: 28px;
       height: 20px;
@@ -150,7 +150,7 @@ export const NavContainer = styled.div`
     gap: 1rem;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     img {
       height: 1.25rem;
       width: 8.5rem;

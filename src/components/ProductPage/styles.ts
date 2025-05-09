@@ -20,7 +20,7 @@ export const Container = styled.main`
     margin: 3rem auto;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     width: 100%;
     margin: 0;
     gap: 1rem;
@@ -61,7 +61,7 @@ export const ImagesContainer = styled.div`
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     min-width: 100%;
 
     img {
@@ -98,7 +98,7 @@ export const InfoContainer = styled.div`
     ${mixins.fonts.textPreset3Regular}
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     padding: 1.5rem;
     padding-bottom: 2rem;
 
@@ -165,7 +165,7 @@ export const Actions = styled.div`
     }
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     flex-direction: column;
     gap: 1rem;
 

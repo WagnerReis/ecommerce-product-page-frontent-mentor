@@ -25,7 +25,7 @@ export const CartContainer = styled.div`
     margin-right: 0.5rem;
   }
 
-  @media (max-width: 375px) {
+  @media (max-width: 480px) {
     position: relative;
     top: 2rem;
   }
