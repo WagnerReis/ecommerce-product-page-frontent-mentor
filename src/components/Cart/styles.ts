@@ -42,3 +42,91 @@ export const CartContent = styled.div`
     ${mixins.fonts.textPreset3Bold}
   }
 `;
+
+export const CartItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  padding: 1.5rem;
+  gap: 1.5rem;
+
+  div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  img {
+    width: 3.125rem;
+    height: 3.125rem;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  button {
+    width: 100%;
+    background: ${(props) => props.theme.orange[500]};
+    border: none;
+    color: ${(props) => props.theme.gray[950]};
+    ${mixins.fonts.textPreset3Bold}
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.8;
+      transition: opacity 0.1s;
+    }
+  }
+`;
+
+export const Resume = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    color: ${(props) => props.theme.gray[500]};
+    cursor: pointer;
+
+    &:hover {
+      color: ${(props) => props.theme.orange[500]};
+      transition: color 0.1s;
+    }
+  }
+`;
+
+export const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 3.125rem;
+
+  h3 {
+    color: ${(props) => props.theme.gray[500]};
+    ${mixins.fonts.textPreset3Regular};
+    margin: 0;
+  }
+
+  div:first-child {
+    margin-bottom: -1rem;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+
+    span {
+      color: ${(props) => props.theme.gray[500]};
+      ${mixins.fonts.textPreset3Regular}
+    }
+
+    strong {
+      color: ${(props) => props.theme.gray[950]};
+      ${mixins.fonts.textPreset3Bold}
+    }
+  }
+`;
