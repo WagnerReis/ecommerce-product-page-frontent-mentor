@@ -5,8 +5,8 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
   height: 5.1875rem;
 
   @media (max-width: 768px) {
