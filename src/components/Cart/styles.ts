@@ -90,6 +90,7 @@ export const Resume = styled.div`
 
   svg {
     color: ${(props) => props.theme.gray[500]};
+    height: 100%;
     cursor: pointer;
 
     &:hover {
