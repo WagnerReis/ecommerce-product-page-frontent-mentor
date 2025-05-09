@@ -3,8 +3,10 @@ import { mixins } from "../../styles/mixins";
 
 export const Container = styled.main`
   width: calc(100% - (2.78125rem * 2));
-  height: 35.3125rem;
-  margin: 6rem auto;
+  height: 100%;
+  margin-top: 6rem;
+  margin-left: auto;
+  margin-right: auto;
 
   display: flex;
   gap: 8rem;
@@ -14,6 +16,15 @@ export const Container = styled.main`
     width: calc(100% - (2.78125rem * 2));
     height: auto;
     gap: 2rem;
+
+    margin: 3rem auto;
+  }
+
+  @media (max-width: 375px) {
+    width: 100%;
+    margin: 0;
+    gap: 1rem;
+    margin-bottom: 100px;
   }
 `;
 
@@ -22,6 +33,7 @@ export const ImagesContainer = styled.div`
   height: 100%;
 
   overflow: hidden;
+  object-fit: cover;
 
   display: flex;
   flex-direction: column;
@@ -32,6 +44,22 @@ export const ImagesContainer = styled.div`
     object-fit: cover;
     border-radius: 12px;
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 100vw;
+      height: 290px;
+    }
+  }
+
+  @media (max-width: 375px) {
+    min-width: 100%;
+
+    img {
+      height: 300px;
+      border-radius: 0;
+    }
   }
 `;
 
@@ -56,6 +84,25 @@ export const InfoContainer = styled.div`
     margin-top: 2rem;
     color: ${(props) => props.theme.gray[500]};
     ${mixins.fonts.textPreset3Regular}
+  }
+
+  @media (max-width: 375px) {
+    padding: 1.5rem;
+    padding-bottom: 2rem;
+
+    h1 {
+      ${mixins.fonts.textPreset6}
+    }
+
+    h2 {
+      margin-top: 1rem;
+      ${mixins.fonts.textPreset2}
+    }
+
+    p {
+      margin-top: 1rem;
+      ${mixins.fonts.textPreset4}
+    }
   }
 `;
 
@@ -97,6 +144,23 @@ export const Actions = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    gap: 1rem;
+
+    div {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 375px) {
+    flex-direction: column;
+    gap: 1rem;
+
+    div {
+      width: 100%;
+    }
+  }
 `;
 
 export const Button = styled.button`

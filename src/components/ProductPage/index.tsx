@@ -24,6 +24,7 @@ import thumbnail1 from "../../assets/image-product-1-thumbnail.jpg";
 import thumbnail2 from "../../assets/image-product-2-thumbnail.jpg";
 import thumbnail3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnail4 from "../../assets/image-product-4-thumbnail.jpg";
+import { useIsMobile } from "../../hooks/use-mobile";
 
 const images = [
   {
@@ -51,37 +52,54 @@ const images = [
 export function ProductPage() {
   const [imageDefault, setImageDefault] = useState(image1);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  function handleCloseModal() {
-    setIsModalOpen(false);
-  }
+  const isMobile = useIsMobile();
 
   function handleOpenModal() {
     setIsModalOpen(true);
+    // Prevent scrolling when modal is open
+    document.body.style.overflow = "hidden";
+  }
+
+  function handleCloseModal() {
+    setIsModalOpen(false);
+    // Restore scrolling
+    document.body.style.overflow = "auto";
   }
 
   return (
     <Container>
       <ImagesContainer>
-        <GalleryModal
-          open={isModalOpen}
-          onClose={handleCloseModal}
-          imagePreview={imageDefault}
-          productImages={images}
+        {!isMobile && (
+          <GalleryModal
+            open={isModalOpen}
+            onClose={handleCloseModal}
+            imagePreview={imageDefault}
+            productImages={images}
+          />
+        )}
+        <img
+          src={imageDefault}
+          alt=""
+          onClick={isMobile ? undefined : handleOpenModal}
         />
-        <img src={imageDefault} alt="" onClick={handleOpenModal} />
 
-        <ThumbnailContainer>
-          {images.map((image) => (
-            <img
-              key={image.id}
-              src={image.thumbnail}
-              alt=""
-              onClick={handleOpenModal}
-              onMouseEnter={() => setImageDefault(image.src)}
-            />
-          ))}
-        </ThumbnailContainer>
+        {!isMobile && (
+          <ThumbnailContainer>
+            {images.map((image) => (
+              <img
+                key={image.id}
+                src={image.thumbnail}
+                alt=""
+                onClick={isMobile ? undefined : handleOpenModal}
+                onMouseEnter={() => {
+                  if (!isMobile) {
+                    setImageDefault(image.src);
+                  }
+                }}
+              />
+            ))}
+          </ThumbnailContainer>
+        )}
       </ImagesContainer>
       <InfoContainer>
         <h1>Sneaker Company</h1>
