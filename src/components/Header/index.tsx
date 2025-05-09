@@ -13,26 +13,16 @@ import {
 } from "./styles";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { Popover } from "radix-ui";
-import { Cart, type CartItem } from "../Cart";
+import { Cart } from "../Cart";
+import { useCartContext } from "../../hooks/use-cart-context";
 
 interface HeaderProps {
   toggleSidebar: () => void;
 }
 
-import thumbnail from "../../assets/image-product-1-thumbnail.jpg";
-
-const cartItems: CartItem[] = [
-  {
-    id: 1,
-    name: "Fall Limited Edition Sneakers",
-    price: 125,
-    quantity: 3,
-    image: thumbnail,
-  },
-];
-
 export function Header({ toggleSidebar }: HeaderProps) {
   const isMobile = useIsMobile();
+  const { cartItems } = useCartContext();
 
   return (
     <>
@@ -60,7 +50,7 @@ export function Header({ toggleSidebar }: HeaderProps) {
             <Popover.Root>
               <Popover.Trigger asChild>
                 <CartContainer>
-                  <span>3</span>
+                  {cartItems.length > 0 && <span>{cartItems.length}</span>}
                   <ShoppingCart absoluteStrokeWidth={false} size={24} />
                 </CartContainer>
               </Popover.Trigger>

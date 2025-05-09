@@ -27,6 +27,7 @@ import thumbnail3 from "../../assets/image-product-3-thumbnail.jpg";
 import thumbnail4 from "../../assets/image-product-4-thumbnail.jpg";
 import { useIsMobile } from "../../hooks/use-mobile";
 import { ChevronButton } from "../ChevronButton";
+import { useCartContext } from "../../hooks/use-cart-context";
 
 const images = [
   {
@@ -55,8 +56,12 @@ export function ProductPage() {
   const [imageDefault, setImageDefault] = useState(image1);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [counter, setCounter] = useState(1);
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const isMobile = useIsMobile();
+
+  const { handleAddToCart } = useCartContext();
 
   function handleOpenModal() {
     setIsModalOpen(true);
@@ -80,6 +85,19 @@ export function ProductPage() {
     const nextIndex = (currentImageIndex - 1 + images.length) % images.length;
     setImageDefault(images[nextIndex].src);
     setCurrentImageIndex(nextIndex);
+  }
+
+  function handleAddItem() {
+    setCounter((state) => state + 1);
+  }
+
+  function handleRemoveItem() {
+    setCounter((state) => {
+      if (state > 1) {
+        return state - 1;
+      }
+      return state;
+    });
   }
 
   return (
@@ -153,8 +171,22 @@ export function ProductPage() {
           <span className="discount">50%</span>
         </PriceContainer>
         <Actions>
-          <QuantitySelector />
-          <Button>
+          <QuantitySelector
+            value={counter}
+            onAdd={handleAddItem}
+            onRemove={handleRemoveItem}
+          />
+          <Button
+            onClick={() =>
+              handleAddToCart({
+                id: "1",
+                name: "Fall Limited Edition Sneakers",
+                price: 125,
+                image: images[0].thumbnail,
+                quantity: counter,
+              })
+            }
+          >
             <ShoppingCart size={18} strokeWidth={2} />
             <span>Add to cart</span>
           </Button>

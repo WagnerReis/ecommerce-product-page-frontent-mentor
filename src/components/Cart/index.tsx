@@ -6,9 +6,10 @@ import {
   Info,
   Resume,
 } from "./styles";
+import { useCartContext } from "../../hooks/use-cart-context";
 
 export interface CartItem {
-  id: number;
+  id: string;
   name: string;
   price: number;
   quantity: number;
@@ -20,6 +21,8 @@ interface CartProps {
 }
 
 export function Cart({ items }: CartProps) {
+  const { handleRemoveFromCart } = useCartContext();
+
   return (
     <CartContainer>
       <header>
@@ -48,12 +51,17 @@ export function Cart({ items }: CartProps) {
                     </div>
                   </div>
                 </Info>
-                <Trash2 size={22} strokeWidth={2} />
+                <Trash2
+                  size={22}
+                  strokeWidth={2}
+                  onClick={() => handleRemoveFromCart(item.id)}
+                />
               </Resume>
             </div>
-            <button>Checkout</button>
           </CartItemContainer>
         ))}
+
+        {items.length > 0 && <button>Checkout</button>}
       </CartContent>
     </CartContainer>
   );

@@ -1,31 +1,25 @@
 import { Minus, Plus } from "lucide-react";
 import { Container } from "./styles";
-import { useState } from "react";
 
-export function QuantitySelector() {
-  const [counter, setCounter] = useState(1);
+interface QuantitySelectorProps {
+  value?: number;
+  onAdd?: () => void;
+  onRemove?: () => void;
+}
 
-  function handleAdd() {
-    setCounter((state) => state + 1);
-  }
-
-  function handleRemove() {
-    setCounter((state) => {
-      if (state > 1) {
-        return state - 1;
-      }
-      return state;
-    });
-  }
-
+export function QuantitySelector({
+  value = 1,
+  onAdd,
+  onRemove,
+}: QuantitySelectorProps) {
   return (
     <Container>
-      <button onClick={handleRemove}>
-        <Minus />
+      <button onClick={onRemove}>
+        <Minus size={20} strokeWidth={4} />
       </button>
-      <span>{counter}</span>
-      <button onClick={handleAdd}>
-        <Plus />
+      <span>{value}</span>
+      <button onClick={onAdd}>
+        <Plus size={20} strokeWidth={4} />
       </button>
     </Container>
   );

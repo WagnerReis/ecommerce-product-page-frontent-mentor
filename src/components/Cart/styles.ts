@@ -37,31 +37,13 @@ export const CartContent = styled.div`
   justify-content: center;
   height: calc(100% - 4.625rem - 1px);
 
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem;
+
   span {
     color: ${(props) => props.theme.gray[500]};
     ${mixins.fonts.textPreset3Bold}
-  }
-`;
-
-export const CartItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-
-  padding: 1.5rem;
-  gap: 1.5rem;
-
-  div {
-    display: flex;
-    gap: 1rem;
-  }
-
-  img {
-    width: 3.125rem;
-    height: 3.125rem;
-    object-fit: cover;
-    border-radius: 4px;
   }
 
   button {
@@ -78,6 +60,27 @@ export const CartItemContainer = styled.div`
       opacity: 0.8;
       transition: opacity 0.1s;
     }
+  }
+`;
+
+export const CartItemContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  gap: 1.5rem;
+
+  div {
+    display: flex;
+    gap: 1rem;
+  }
+
+  img {
+    width: 3.125rem;
+    height: 3.125rem;
+    object-fit: cover;
+    border-radius: 4px;
   }
 `;
 
